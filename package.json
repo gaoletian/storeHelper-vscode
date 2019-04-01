@@ -1,0 +1,41 @@
+{
+  "name": "storehelper-vscode",
+  "displayName": "storeHelper dts generator",
+  "description": "storeHelper.d.ts generator",
+  "version": "0.0.1",
+  "publisher": "gaoletian",
+  "engines": {
+    "vscode": "^1.32.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.helloWorld",
+        "title": "Hello World"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "yarn run compile && node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.123",
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^10.12.21",
+    "lodash": "^4.17.11",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.1",
+    "vscode": "^1.1.28"
+  }
+}
