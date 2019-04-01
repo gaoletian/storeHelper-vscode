@@ -7,6 +7,10 @@
   "engines": {
     "vscode": "^1.32.0"
   },
+  "repository": {
+    "url": "git@github.com:gaoletian/storeHelper-vscode.git",
+    "type": "git"
+  },
   "categories": [
     "Other"
   ],
