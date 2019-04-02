@@ -1,5 +1,7 @@
 import * as path from "path";
 import * as _ from "lodash";
+import * as fs from 'fs';
+
 const ProjectDir = process.cwd();
 const projPath = (file: string) => path.join(ProjectDir, file);
 const normalize = (files: string[]) =>
@@ -54,3 +56,23 @@ declare module '@nuxt/vue-app/types/index' {
 }
 `;
 };
+
+
+export function getStoreFileList(searchPath: string): string[] {
+  const filelist: string[] = [];
+  const readdir = (dirpath: string, deep = 0) => {
+    let list = fs.readdirSync(dirpath);
+    list
+      .filter(it => it.toLowerCase() !== "index.ts")
+      .forEach(it => {
+        let filepath = path.join(dirpath, it);
+        if (fs.statSync(filepath).isDirectory()) {
+          readdir(filepath, deep++);
+        } else {
+          filelist.push(filepath);
+        }
+      });
+  };
+  readdir(searchPath);
+  return filelist;
+}

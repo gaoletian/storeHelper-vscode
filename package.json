@@ -21,7 +21,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "extension.helloworld",
+        "command": "storehelper.test",
         "title": "storehelper: create storeHelper.d.ts"
       }
     ]

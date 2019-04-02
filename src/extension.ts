@@ -1,7 +1,6 @@
 import * as vscode from "vscode";
 import * as fs from "fs";
-import * as path from "path";
-import { genDts } from "./storeHelper";
+import { genDts, getStoreFileList } from "./storeHelper";
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -13,7 +12,7 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand("extension.helloworld", () => {
+    vscode.commands.registerCommand("storehelper.test", () => {
       let workdir = vscode.workspace.workspaceFolders;
       let workspaceName = (workdir && workdir.length) ? workdir[0].name : '未知工作区';
       vscode.window.showInformationMessage("storeHelper test workdir = ", workspaceName);
@@ -52,24 +51,6 @@ function storeHelperTask(uri: vscode.Uri) {
 
     vscode.window.showInformationMessage("storeHelper.d.ts has updated!!");
   }
-}
-function getStoreFileList(searchPath: string): string[] {
-  const filelist: string[] = [];
-  const readdir = (dirpath: string, deep = 0) => {
-    let list = fs.readdirSync(dirpath);
-    list
-      .filter(it => it.toLowerCase() !== "index.ts")
-      .forEach(it => {
-        let filepath = path.join(dirpath, it);
-        if (fs.statSync(filepath).isDirectory()) {
-          readdir(filepath, deep++);
-        } else {
-          filelist.push(filepath);
-        }
-      });
-  };
-  readdir(searchPath);
-  return filelist;
 }
 
 // prettier
