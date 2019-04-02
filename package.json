@@ -2,7 +2,7 @@
   "name": "storehelper-vscode",
   "displayName": "storeHelper dts generator",
   "description": "storeHelper.d.ts generator",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "publisher": "gaoletian",
   "engines": {
     "vscode": "^1.32.0"
