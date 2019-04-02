@@ -34,7 +34,6 @@ export function activate(context: vscode.ExtensionContext) {
 export function deactivate() {}
 
 function storeHelperTask(uri: vscode.Uri) {
-  vscode.window.showInformationMessage("正在生成 storeHelper.d.ts ....");
   //   vscode.window.showInformationMessage(uri + "changed");
   let workspaceFolder = vscode.workspace.getWorkspaceFolder(uri);
   if (workspaceFolder && workspaceFolder.uri.fsPath) {
