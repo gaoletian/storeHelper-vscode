@@ -36,6 +36,7 @@
   "dependencies": {
     "lodash": "^4.17.11"
   },
+  "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
     "@types/lodash": "^4.14.123",
     "@types/mocha": "^2.2.42",
