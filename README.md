@@ -1,17 +1,27 @@
-# store-helper-vscode README
+# store-helper-vscode
 
-vuex store dts auto generator
+自动生成storeHelper.d.ts
+
+## 安装
+
+在vscode 插件市场搜索  storehelper 安装
+
+![](2019-04-02-19-01-43.png)
 
 ## Features
 
-if your project is nuxt + typescirpt and use vuex-module-decorators to define store,
+自动生成storeHelper.d.ts
 
-store-helper-vscode will generator storeHelper.d.ts for you 
+https://github.com/gaoletian/nuxt-ts-pont-demo，
 
 ## Release Notes
 
 Users appreciate release notes as you update your extension.
 
+### 0.2.3
+
+可用版本
+
 ### 0.0.1
 
-Initial release of ...
+初始发布
