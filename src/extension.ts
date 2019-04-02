@@ -11,6 +11,15 @@ export function activate(context: vscode.ExtensionContext) {
   const fileWatcher = vscode.workspace.createFileSystemWatcher(
     "**/app/store/**/*.ts"
   );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("extension.helloworld", () => {
+      let workdir = vscode.workspace.workspaceFolders;
+      let workspaceName = (workdir && workdir.length) ? workdir[0].name : '未知工作区';
+      vscode.window.showInformationMessage("storeHelper test workdir = ", workspaceName);
+    })
+  );
+
   context.subscriptions.push(
     fileWatcher.onDidChange(uri => storeHelperTask(uri))
   );
@@ -26,6 +35,7 @@ export function activate(context: vscode.ExtensionContext) {
 export function deactivate() {}
 
 function storeHelperTask(uri: vscode.Uri) {
+  vscode.window.showInformationMessage("正在生成 storeHelper.d.ts ....");
   //   vscode.window.showInformationMessage(uri + "changed");
   let workspaceFolder = vscode.workspace.getWorkspaceFolder(uri);
   if (workspaceFolder && workspaceFolder.uri.fsPath) {
@@ -40,8 +50,6 @@ function storeHelperTask(uri: vscode.Uri) {
 
     fs.writeFileSync(workdir + "/types/storeHelper.d.ts", dtsCode);
 
-    // console.log(workdir + "/app/store");
-    // console.log(fileList);
     vscode.window.showInformationMessage("storeHelper.d.ts has updated!!");
   }
 }
